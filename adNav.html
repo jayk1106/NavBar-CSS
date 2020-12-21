@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>Navbar</title>
+        <style>
+            *{
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            header{
+                width: 100%;
+                height: 60px;
+                background-color: #262626;
+                color:#fff;
+                margin: 0;
+                position: relative;
+                
+            }
+             
+            .logo{
+                display: flex;
+                width: 40%;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                float: left;
+            }
+            .nav{
+                list-style: none;
+                display: flex;
+                width: 60%;
+                height: 100%;
+                align-items: center;
+                justify-content: space-evenly;
+                float: right;
+            }
+            
+            .nav-item a{
+                text-decoration: none;
+                color: #fff;
+            }
+            @media screen and (max-width:800px){
+                header .menu-btn{
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 60px;
+                height: 60px;
+                transition: all 0.5s ease-in;
+                cursor: pointer;
+            }
+            header .menu-btn .menu-bur{
+                width: 40px;
+                height: 4px;
+                background-color: #fff;
+                border-radius: 5px;
+                transition: all 0.5s ease-in;
+            }
+            header .menu-btn .menu-bur::before , header .menu-btn .menu-bur::after{
+                content: "";
+                position: absolute;
+                width: 40px;
+                height: 4px;
+                background-color: #fff;
+                border-radius: 5px;
+                transition: all 0.5s ease-in;
+            }
+            header .menu-btn .menu-bur::before{
+                transform: translateY(-12px);
+            }
+            header .menu-btn .menu-bur::after{
+                transform:translateY(12px);
+            }
+            header .menu-btn.open .menu-bur{
+                
+                background: transparent;
+
+            }
+            header .menu-btn.open .menu-bur::before{
+                transform: rotate(-45deg) ;
+            }
+            header .menu-btn.open .menu-bur::after{
+                transform: rotate(45deg) ;
+            }
+            
+            .nav{
+                flex-direction: column;
+                background: #262626;
+                width: 100%;
+                height: calc(100vh - 60px);
+                clip-path: circle(10px at 100% -10%);
+                transition: all 1s ease;
+            }    
+            .menu-btn.open ~ .nav{
+                clip-path: circle(1100px at 100% 0%);
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="menu-btn">
+                <div class="menu-bur"></div>
+            </div>
+            <div class="logo">
+                LOGO
+            </div>
+            <ul class="nav">
+                <li class="nav-item"><a href="#">Home</a></li>
+                <li class="nav-item"><a href="#">About</a></li>
+                <li class="nav-item"><a href="#">Service</a></li>
+                <li class="nav-item"><a href="#">Contect</a></li>
+            </ul>
+        </header>
+
+
+        
+        <script>
+            const menubtn = document.querySelector('.menu-btn');
+            let menuOpen = false;
+            menubtn.addEventListener('click',() => {
+                if(!menuOpen){
+                    menubtn.classList.add('open');
+                    menuOpen=true;
+                }else{
+                    menubtn.classList.remove('open');
+                    menuOpen=false;
+                }
+            });
+        </script>
+    </body>
+</html>
